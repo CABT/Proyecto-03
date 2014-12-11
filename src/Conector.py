@@ -7,26 +7,26 @@ import psycopg2
 
 class Conector(object):
 
-        def __init__(self):
-                self.conn = psycopg2.connect("dbname = TESTDB user = chepe")
-                self.cur = self.conn.cursor()
+	def __init__(self):
+        	self.conn = psycopg2.connect("dbname = foro user = carlos")
+        	self.cur = self.conn.cursor()
 
 	#Ejecutamos algo :3
 	def ejecucion(self):
-		cur.execute("CREATE TABLE test2 (id serial PRIMARY KEY, numero integer, datos text);")
-		#Metemos algo en la tabla 
-		cur.execute("INSERT INTO test2 (numero, datos) VALUES (%s, %s)",(100, "abc'def"))
-		cur.execute("SELECT * FROM  prueba;")
-		cur.fetchall()
+		#self.cur.execute("CREATE TABLE test2 (id serial PRIMARY KEY, numero integer, datos text);")
+		#Metemos algo en la tabla
+		#self.cur.execute("INSERT INTO test2 (numero, datos) VALUES (%s, %s)",(100, "abc'def"))
+		self.cur.execute("SELECT * FROM  test2;")
+		self.cur.fetchall()
 
  	#Hacer los cambios
 	def cambiar(self):
-		conn.commit()
+		self.conn.commit()
 
 	#Cerrar la conn
 	def cerrar(self):
-		cur.close()
-		conn.close()
+		self.cur.close()
+		self.conn.close()
 
 	
 #Hola :)

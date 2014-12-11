@@ -29,7 +29,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: album; Type: TABLE; Schema: public; Owner: sango; Tablespace: 
+-- Name: album; Type: TABLE; Schema: public; Owner: ubuntu; Tablespace: 
 --
 
 CREATE TABLE album (
@@ -39,10 +39,10 @@ CREATE TABLE album (
 );
 
 
-ALTER TABLE public.album OWNER TO sango;
+ALTER TABLE public.album OWNER TO ubuntu;
 
 --
--- Name: banda; Type: TABLE; Schema: public; Owner: sango; Tablespace: 
+-- Name: banda; Type: TABLE; Schema: public; Owner: ubuntu; Tablespace: 
 --
 
 CREATE TABLE banda (
@@ -51,10 +51,10 @@ CREATE TABLE banda (
 );
 
 
-ALTER TABLE public.banda OWNER TO sango;
+ALTER TABLE public.banda OWNER TO ubuntu;
 
 --
--- Name: genero; Type: TABLE; Schema: public; Owner: sango; Tablespace: 
+-- Name: genero; Type: TABLE; Schema: public; Owner: ubuntu; Tablespace: 
 --
 
 CREATE TABLE genero (
@@ -63,10 +63,10 @@ CREATE TABLE genero (
 );
 
 
-ALTER TABLE public.genero OWNER TO sango;
+ALTER TABLE public.genero OWNER TO ubuntu;
 
 --
--- Name: pais; Type: TABLE; Schema: public; Owner: sango; Tablespace: 
+-- Name: pais; Type: TABLE; Schema: public; Owner: ubuntu; Tablespace: 
 --
 
 CREATE TABLE pais (
@@ -75,10 +75,10 @@ CREATE TABLE pais (
 );
 
 
-ALTER TABLE public.pais OWNER TO sango;
+ALTER TABLE public.pais OWNER TO ubuntu;
 
 --
--- Name: relacion_banda_pais; Type: TABLE; Schema: public; Owner: sango; Tablespace: 
+-- Name: relacion_banda_pais; Type: TABLE; Schema: public; Owner: ubuntu; Tablespace: 
 --
 
 CREATE TABLE relacion_banda_pais (
@@ -87,10 +87,10 @@ CREATE TABLE relacion_banda_pais (
 );
 
 
-ALTER TABLE public.relacion_banda_pais OWNER TO sango;
+ALTER TABLE public.relacion_banda_pais OWNER TO ubuntu;
 
 --
--- Name: relacion_usuario_pais; Type: TABLE; Schema: public; Owner: sango; Tablespace: 
+-- Name: relacion_usuario_pais; Type: TABLE; Schema: public; Owner: ubuntu; Tablespace: 
 --
 
 CREATE TABLE relacion_usuario_pais (
@@ -99,10 +99,10 @@ CREATE TABLE relacion_usuario_pais (
 );
 
 
-ALTER TABLE public.relacion_usuario_pais OWNER TO sango;
+ALTER TABLE public.relacion_usuario_pais OWNER TO ubuntu;
 
 --
--- Name: tema; Type: TABLE; Schema: public; Owner: sango; Tablespace: 
+-- Name: tema; Type: TABLE; Schema: public; Owner: ubuntu; Tablespace: 
 --
 
 CREATE TABLE tema (
@@ -111,10 +111,10 @@ CREATE TABLE tema (
 );
 
 
-ALTER TABLE public.tema OWNER TO sango;
+ALTER TABLE public.tema OWNER TO ubuntu;
 
 --
--- Name: usuario; Type: TABLE; Schema: public; Owner: sango; Tablespace: 
+-- Name: usuario; Type: TABLE; Schema: public; Owner: ubuntu; Tablespace: 
 --
 
 CREATE TABLE usuario (
@@ -125,10 +125,10 @@ CREATE TABLE usuario (
 );
 
 
-ALTER TABLE public.usuario OWNER TO sango;
+ALTER TABLE public.usuario OWNER TO ubuntu;
 
 --
--- Data for Name: album; Type: TABLE DATA; Schema: public; Owner: sango
+-- Data for Name: album; Type: TABLE DATA; Schema: public; Owner: ubuntu
 --
 
 COPY album (id, nombre, anio) FROM stdin;
@@ -136,7 +136,7 @@ COPY album (id, nombre, anio) FROM stdin;
 
 
 --
--- Data for Name: banda; Type: TABLE DATA; Schema: public; Owner: sango
+-- Data for Name: banda; Type: TABLE DATA; Schema: public; Owner: ubuntu
 --
 
 COPY banda (id, nombre) FROM stdin;
@@ -144,7 +144,7 @@ COPY banda (id, nombre) FROM stdin;
 
 
 --
--- Data for Name: genero; Type: TABLE DATA; Schema: public; Owner: sango
+-- Data for Name: genero; Type: TABLE DATA; Schema: public; Owner: ubuntu
 --
 
 COPY genero (id, nombre) FROM stdin;
@@ -152,7 +152,7 @@ COPY genero (id, nombre) FROM stdin;
 
 
 --
--- Data for Name: pais; Type: TABLE DATA; Schema: public; Owner: sango
+-- Data for Name: pais; Type: TABLE DATA; Schema: public; Owner: ubuntu
 --
 
 COPY pais (id, nombre) FROM stdin;
@@ -160,7 +160,7 @@ COPY pais (id, nombre) FROM stdin;
 
 
 --
--- Data for Name: relacion_banda_pais; Type: TABLE DATA; Schema: public; Owner: sango
+-- Data for Name: relacion_banda_pais; Type: TABLE DATA; Schema: public; Owner: ubuntu
 --
 
 COPY relacion_banda_pais (banda_id, pais_id) FROM stdin;
@@ -168,7 +168,7 @@ COPY relacion_banda_pais (banda_id, pais_id) FROM stdin;
 
 
 --
--- Data for Name: relacion_usuario_pais; Type: TABLE DATA; Schema: public; Owner: sango
+-- Data for Name: relacion_usuario_pais; Type: TABLE DATA; Schema: public; Owner: ubuntu
 --
 
 COPY relacion_usuario_pais (usuario_id, pais_id) FROM stdin;
@@ -176,7 +176,7 @@ COPY relacion_usuario_pais (usuario_id, pais_id) FROM stdin;
 
 
 --
--- Data for Name: tema; Type: TABLE DATA; Schema: public; Owner: sango
+-- Data for Name: tema; Type: TABLE DATA; Schema: public; Owner: ubuntu
 --
 
 COPY tema (id, nombre) FROM stdin;
@@ -184,7 +184,7 @@ COPY tema (id, nombre) FROM stdin;
 
 
 --
--- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: sango
+-- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: ubuntu
 --
 
 COPY usuario (id, nombre, administrador, fecha_nacimiento) FROM stdin;

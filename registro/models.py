@@ -17,4 +17,14 @@ class Usuario(models.Model):
         return self.user.nombre
 
 #Tal vez a ustedes no les importa pero a juan sí
-
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí#ustedes no
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí

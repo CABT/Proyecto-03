@@ -18,3 +18,4 @@ class Usuario(models.Model):
 
 
 #No me importa!! el merge debe salir bien >:(
+#no lo se tal vez funciona

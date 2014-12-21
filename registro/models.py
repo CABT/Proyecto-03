@@ -16,4 +16,19 @@ class Usuario(models.Model):
     def __unicode__(self):
         return self.user.nombre
 
+<<<<<<< HEAD
 
+=======
+#Tal vez a ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí#ustedes no
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+#ustedes no les importa pero a juan sí
+>>>>>>> fa460c6c400f7e928d8ab00e667f19d761bd530c

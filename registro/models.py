@@ -17,3 +17,4 @@ class Usuario(models.Model):
         return self.user.nombre
 
 
+#No me importa!! el merge debe salir bien >:(

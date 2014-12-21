@@ -1,7 +1,7 @@
 from django.db import models
 from django_countries.fields import CountryField
 from django.contrib.auth.models import User
-
+#comentario bobo
 from django.db import models	
 
 # Create your models here.
@@ -17,5 +17,4 @@ class Usuario(models.Model):
         return self.user.nombre
 
 
-#No me importa!! el merge debe salir bien >:(
-#no lo se tal vez funciona
+

@@ -1,7 +1,7 @@
 from django.db import models
 from django_countries.fields import CountryField
 from django.contrib.auth.models import User
-
+#comentario bobo
 from django.db import models	
 
 # Create your models here.

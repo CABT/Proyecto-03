@@ -16,5 +16,5 @@ class Usuario(models.Model):
     def __unicode__(self):
         return self.user.nombre
 
-
+#Tal vez a ustedes no les importa pero a juan sí
 

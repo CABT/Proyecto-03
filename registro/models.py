@@ -1,8 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django_countries.fields import CountryField
+<<<<<<< HEAD
 from imagekit.models import ProcessedImageField 
 from imagekit.processors import ResizeToFill
+=======
+from django.contrib.auth.models import User
+#comentario bobo
+from django.db import models	
+>>>>>>> 5b303d0594085341b1149d62ddded4cfdbc03078
 
 # Create your models here.
 

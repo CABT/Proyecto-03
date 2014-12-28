@@ -20,6 +20,8 @@ class RegistroUsuario(AbstractUser):
     pais = CountryField(verbose_name='País')
     correo = models.EmailField(verbose_name='Dirección de correo', unique=True,
                               max_length=255)
+    fecha = models.DateTimeField(verbose_name='Fecha de registro', auto_now_add=True,
+                                 auto_now=False)
     
     def __str__(self):
         return smart_unicode(self.nombre)

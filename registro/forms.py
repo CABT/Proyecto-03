@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 from django import forms
 from .models import RegistroUsuario
+from django.utils.translation import ugettext_lazy as _
 import re
 
 class FormaRegistro(forms.ModelForm):
@@ -16,8 +17,13 @@ class FormaRegistro(forms.ModelForm):
 
     class Meta:
         model = RegistroUsuario
-        fields = ["nombre", "username", "email", "password", 
+        fields = ["nombre", "username", "correo", "password", 
                   "password_check", "pais", "avatar",]
+        labels = {
+            'nombre': _('Nombre de Perfil'),
+
+            'avatar': _('Foto de Perfil'),
+        }
 
     def clean_password_check(self):
         if 'password' in self.cleaned_data:
@@ -41,7 +47,7 @@ class FormaRegistro(forms.ModelForm):
 
     def clean_email(self):
         if RegistroUsuario.objects.filter(
-                email__iexact=self.cleaned_data['email']).count():
+                email__iexact=self.cleaned_data['correo']).count():
             raise forms.ValidationError(u'Este correo ya está en uso,'
                                         'por favor utilice otro.')
-        return self.cleaned_data['email']
+        return self.cleaned_data['correo']

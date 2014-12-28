@@ -4,9 +4,11 @@
 <html>
 <head>
     {# Load CSS and JavaScript #}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "registro/registro.css" %}">
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-    <title>{% block title %}Ejemplo{% endblock %}</title>
+    <title>{% block title %}Sango Bemoledor{% endblock %}</title>
 </head>
 
 <body>

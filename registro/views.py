@@ -26,13 +26,9 @@ class VistaRegistro(CreateView):
         form.instance.activation_key = ''.join(
             random.choice(string.ascii_uppercase + string.digits)
             for n in range(20))
-        usuario = form.cleaned_data.get('email')
-        html_content = 'Por favor visite http://sangobemoledor.com'
-        '/activar/%s/ para activar su cuenta' \
-            %(form.instance.activation_key)
-        msg = EmailMultiAlternatives('Código de Activación',html_content,\
-                                     'registration@midiminio.com',
-                                     [usuario])
+        usuario = form.cleaned_data.get('correo')
+        html_content = 'Por favor visite http://sangobemoledor.com/activar/%s/ para activar su cuenta'%(form.instance.activation_key)
+        msg = EmailMultiAlternatives('Código de Activación',html_content,'registration@midiminio.com',[usuario])
         msg.attach_alternative(html_content,'text/html')
         msg.send()
         return super(VistaRegistro, self).form_valid(form)

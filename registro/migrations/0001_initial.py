@@ -33,6 +33,7 @@ class Migration(migrations.Migration):
                 ('clave_activacion', models.CharField(max_length=30)),
                 ('avatar', imagekit.models.fields.ProcessedImageField(default=b'media/img_usuario_default.png', upload_to=b'media')),
                 ('pais', django_countries.fields.CountryField(max_length=2)),
+                ('correo', models.EmailField(unique=True, max_length=255, verbose_name=b'Direcci\xc3\xb3n de correo')),
                 ('groups', models.ManyToManyField(related_query_name='user', related_name='user_set', to='auth.Group', blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of his/her group.', verbose_name='groups')),
                 ('user_permissions', models.ManyToManyField(related_query_name='user', related_name='user_set', to='auth.Permission', blank=True, help_text='Specific permissions for this user.', verbose_name='user permissions')),
             ],

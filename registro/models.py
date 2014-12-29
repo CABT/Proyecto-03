@@ -10,17 +10,15 @@ from django.utils.encoding import smart_unicode
 
 class RegistroUsuario(AbstractUser):
     nombre = models.CharField(max_length=50, verbose_name='Nombre de Perfil')
-    avatar = ProcessedImageField(verbose_name='Foto de Perfil', upload_to='media',
+    avatar = ProcessedImageField(verbose_name='Foto de Perfil', upload_to='/static/registro/media',
                                  processors=[ResizeToFill(50,50)],
                                  format='JPEG',
                                  options={'quality: 75'},
-                                 default='media/img_usuario_default.png'
+                                 default='/static/registro/media/img_usuario_default.png'
                                  )
     pais = CountryField(verbose_name='País')
     correo = models.EmailField(verbose_name='Dirección de correo', unique=True,
                               max_length=255)
-    fecha = models.DateTimeField(verbose_name='Fecha de registro', auto_now_add=True,
-                                 auto_now=False)
     
     def __str__(self):
         return self.nombre

@@ -3,4 +3,7 @@ from .models import RegistroUsuario
 
 # Register your models here.
 
-admin.site.register(RegistroUsuario)
+class RegistroAdmin(admin.ModelAdmin):
+    fields = ['nombre', 'username', 'correo', 'pais', 'avatar',  'is_superuser', 'is_staff', 'is_active',
+              'last_login', 'date_joined']
+admin.site.register(RegistroUsuario, RegistroAdmin)

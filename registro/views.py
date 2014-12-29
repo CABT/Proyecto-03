@@ -13,5 +13,4 @@ class VistaRegistro(CreateView):
     template_name = 'registro/registro.html'
     
     def form_valid(self, form):
-        form.instance.is_active = False
         return super(VistaRegistro, self).form_valid(form)

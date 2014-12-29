@@ -14,16 +14,11 @@ class FormaRegistro(forms.ModelForm):
         label='Ingrese su contraseña nuevamente',
         widget=forms.PasswordInput()
     )
-
+    
     class Meta:
         model = RegistroUsuario
         fields = ["nombre", "username", "correo", "password", 
                   "password_check", "pais", "avatar",]
-        labels = {
-            'nombre': _('Nombre de Perfil'),
-
-            'avatar': _('Foto de Perfil'),
-        }
 
     def clean_password_check(self):
         if 'password' in self.cleaned_data:
@@ -32,7 +27,7 @@ class FormaRegistro(forms.ModelForm):
             if password == password_check:
                 return password_check
             raise forms.ValidationError('Las contraseñas no coinciden.')
-
+            
     def clean_username(self):
         username = self.cleaned_data['username']
         if not re.search(r'^\w+$', username):
@@ -51,3 +46,10 @@ class FormaRegistro(forms.ModelForm):
             raise forms.ValidationError(u'Este correo ya está en uso,'
                                         'por favor utilice otro.')
         return self.cleaned_data['correo']
+
+    def save(self, commit=True):
+        usuario = super(FormaRegistro, self).save(commit=False)
+        usuario.set_password(self.cleaned_data["password"])
+        if commit:
+            usuario.save()
+        return usuario

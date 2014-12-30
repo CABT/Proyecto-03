@@ -20,8 +20,8 @@ class VistaRegistro(CreateView):
     	form.instance.activation_key = ''.join(random.choice(string.ascii_uppercase + string.digits) for n in range(20))
     	#obtenemos el campo de la base de datos para los datos de envio
     	usuario = form.cleaned_data.get('correo')
-    	#Redactamos el contenido
-    	contenido_html = 'Por favor visite http://127.0.0.1:8000/activar/%s/ para activar su cuenta' %(form.instance.activation_key)
+    	#Redactamos el contenido, aquí modifiquen el URL propio :3
+    	contenido_html = 'Por favor visite http://127.0.0.1:8000/registro/activar/%s/ para activar su cuenta' %(form.instance.activation_key)
     	msg = EmailMultiAlternatives('Código de Activación',contenido_html,'cgah.95@gmail.com',[usuario])
     	#anexamos el contenido
     	msg.attach_alternative(contenido_html,'text/html')
@@ -33,25 +33,25 @@ class VistaRegistro(CreateView):
 class VistaUsuarioActivacion(CreateView):
 
 	def dispatch(self, *args, **kwargs):
-	        self.codigo_activacion = self.kwargs['codigo_activacion']
-	        return super(ActivteUserView, self).dispatch(*args, **kwargs)
+	        self.codigo = self.kwargs['CODIGO']
+	        return super(VistaUsuarioActivacion, self).dispatch(*args, **kwargs)
 
 	def get(self, request, *args, **kwargs):
 	    try:
-	        self.usuario = UserRegister.objects.get(activation_key=self.codigo_activacion)
+	        self.usuario = RegistroUsuario.objects.get(activation_key=self.codigo)
 	        if self.usuario.is_active == False:
 	            self.usuario.is_active = True
 	            self.usuario.save()
 	            return HttpResponseRedirect("/registro/activacion_exitosa/")
 	        else:
 	            return HttpResponseRedirect("/registro/ya_activo/")
-	        except UserRegister.DoesNotExist:
-	            return HttpResponseRedirect('/registro/error_activacion') 
+	    except RegistroUsuario.DoesNotExist:
+	        return HttpResponseRedirect('/registro/error_activacion') 
 
 #Vistas resultantes de acuerdo al intento de activacion
 class VistaActivacionExitosa(TemplateView):
-	template_name = 'registro/usuario_activo'
+	template_name = 'registro/usuario_activo.html'
 class VistaYaActivo(TemplateView):
-	template_name = 'registro/usuario_ya_activo'
+	template_name = 'registro/usuario_ya_activo.html'
 class VistaError(TemplateView):
-	template_name = 'registro/error_activacion'
+	template_name = 'registro/error_activacion.html'

@@ -7,6 +7,7 @@ import random, string
 from .models import RegistroUsuario
 from .forms import FormaRegistro 
 
+#Vista del registro 
 class VistaRegistro(CreateView):
     model = RegistroUsuario
     form_class = FormaRegistro
@@ -27,3 +28,30 @@ class VistaRegistro(CreateView):
     	#se envia el correo
     	msg.send()
     	return super(VistaRegistro, self).form_valid(form)
+
+#Vista de activacion, con sus respectivos redireccionamientos
+class VistaUsuarioActivacion(CreateView):
+
+	def dispatch(self, *args, **kwargs):
+	        self.codigo_activacion = self.kwargs['codigo_activacion']
+	        return super(ActivteUserView, self).dispatch(*args, **kwargs)
+
+	def get(self, request, *args, **kwargs):
+	    try:
+	        self.usuario = UserRegister.objects.get(activation_key=self.codigo_activacion)
+	        if self.usuario.is_active == False:
+	            self.usuario.is_active = True
+	            self.usuario.save()
+	            return HttpResponseRedirect("/registro/activacion_exitosa/")
+	        else:
+	            return HttpResponseRedirect("/registro/ya_activo/")
+	        except UserRegister.DoesNotExist:
+	            return HttpResponseRedirect('/registro/error_activacion') 
+
+#Vistas resultantes de acuerdo al intento de activacion
+class VistaActivacionExitosa(TemplateView):
+	template_name = 'registro/usuario_activo'
+class VistaYaActivo(TemplateView):
+	template_name = 'registro/usuario_ya_activo'
+class VistaError(TemplateView):
+	template_name = 'registro/error_activacion'

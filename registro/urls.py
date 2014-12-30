@@ -1,10 +1,7 @@
+# -*- coding: UTF-8 -*-
 from django.conf.urls import patterns, include, url
 from .views import *
 
-'''
-urlpatterns = patterns('registro.views',
-                url(r'^$', VistaRegistro.as_view(), name='registro'),                
-'''
 urlpatterns = patterns('.views',
                 url(r'^$',VistaRegistro.as_view(), name='registro'),
                 #Esta será la url que reciba el usuario a registrar por correo y mandará a llamar el método que verificará la validez

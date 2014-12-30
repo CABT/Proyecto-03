@@ -22,7 +22,7 @@ class VistaRegistro(CreateView):
     	#obtenemos el campo de la base de datos para los datos de envio
     	usuario = form.cleaned_data.get('correo')
     	#Redactamos el contenido, aquí modifiquen el URL propio :3
-    	contenido_html = 'Por favor visite http://127.0.0.1:8000/registro/activar/%s/ para activar su cuenta' %(form.instance.activation_key)
+    	contenido_html = 'Por favor visite sangobemoledor.com/registro/activar/%s/ para activar su cuenta' %(form.instance.activation_key)
     	msg = EmailMultiAlternatives('Código de Activación',contenido_html,'cgah.95@gmail.com',[usuario])
     	#anexamos el contenido
     	msg.attach_alternative(contenido_html,'text/html')

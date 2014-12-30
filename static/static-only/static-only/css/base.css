@@ -1,0 +1,17 @@
+body {
+    padding-top: 90px;
+ }
+
+.navbar-brand {
+    padding-top: 6px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+footer  {
+    padding-top:30px;
+}
+
+.breadcrumb  {
+    background-color:#282828;
+}

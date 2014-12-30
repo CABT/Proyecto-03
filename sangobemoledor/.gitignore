@@ -1,0 +1,6 @@
+*.pyc
+settings.py
+*.py#
+*.py~
+python_proy3/
+migrations/

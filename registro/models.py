@@ -9,7 +9,6 @@ from imagekit.processors import ResizeToFill
 # Create your models here.
 
 class RegistroUsuario(AbstractUser):
-    nombre = models.CharField(max_length=50, verbose_name='Nombre de Perfil')
     avatar = ProcessedImageField(verbose_name='Foto de Perfil', upload_to='/static/registro/media',
                                  processors=[ResizeToFill(50,50)],
                                  format='JPEG',
@@ -19,12 +18,12 @@ class RegistroUsuario(AbstractUser):
     pais = CountryField(verbose_name='País')
     correo = models.EmailField(verbose_name='Dirección de correo', unique=True,
                               max_length=255)
+    descripcion = models.CharField(verbose_name='Descripción', max_length=255,
+                                   null = True, blank = True)
     activation_key = models.CharField(default='12345',max_length=30)
-
-    
     def __str__(self):
-        return self.nombre
+        return self.smart_unicode(username)
 
     def __unicode__(self):
-        return self.nombre
+        return self.smart_unicode(username)
  

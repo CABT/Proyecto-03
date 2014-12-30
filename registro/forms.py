@@ -60,5 +60,6 @@ class FormaRegistro(forms.ModelForm):
             usuario.save()
         return usuario
 
+
 #class FormaIniciaSesion(forms.ModelForm):
     

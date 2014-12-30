@@ -1,3 +1,11 @@
-form  {
+input  {
+    max-width: 350px;
+}
 
+select  {
+    max-width: 350px;
+}
+
+span.help-block  {
+    max-width: 350px;
 }

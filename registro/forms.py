@@ -53,3 +53,4 @@ class FormaRegistro(forms.ModelForm):
         if commit:
             usuario.save()
         return usuario
+       

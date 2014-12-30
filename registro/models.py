@@ -9,7 +9,6 @@ from django.utils.encoding import smart_unicode
 # Create your models here.
 
 class RegistroUsuario(AbstractUser):
-    nombre = models.CharField(max_length=50, verbose_name='Nombre de Perfil')
     avatar = ProcessedImageField(verbose_name='Foto de Perfil', upload_to='/static/registro/media',
                                  processors=[ResizeToFill(50,50)],
                                  format='JPEG',
@@ -21,8 +20,8 @@ class RegistroUsuario(AbstractUser):
                               max_length=255)
     
     def __str__(self):
-        return self.nombre
+        return self.smart_unicode(username)
 
     def __unicode__(self):
-        return self.nombre
+        return self.smart_unicode(username)
  

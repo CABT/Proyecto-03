@@ -17,7 +17,7 @@ class FormaRegistro(forms.ModelForm):
     
     class Meta:
         model = RegistroUsuario
-        fields = ["nombre", "username", "correo", "password", 
+        fields = ["username", "correo", "password", 
                   "password_check", "pais", "avatar",]
 
     def clean_password_check(self):

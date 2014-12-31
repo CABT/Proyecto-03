@@ -12,7 +12,7 @@ class VistaRegistro(CreateView):
     model = RegistroUsuario
     form_class = FormaRegistro
     template_name = 'registro/registro.html'
-    success_url = '/registro/registro_completado/'
+    success_url = '/registro/registro_exito/'
     
     def form_valid(self, form):
     	#Cambiamos el valor por omision para que sea forzosa su activacion
@@ -22,7 +22,7 @@ class VistaRegistro(CreateView):
     	#obtenemos el campo de la base de datos para los datos de envio
     	usuario = form.cleaned_data.get('correo')
     	#Redactamos el contenido, aquí modifiquen el URL propio :3
-    	contenido_html = 'Por favor visite http://127.0.0.1:8000/registro/activar/%s/ para activar su cuenta' %(form.instance.activation_key)
+    	contenido_html = 'Por favor visite sangobemoledor.com/registro/activar/%s/ para activar su cuenta' %(form.instance.activation_key)
     	msg = EmailMultiAlternatives('Código de Activación',contenido_html,'cgah.95@gmail.com',[usuario])
     	#anexamos el contenido
     	msg.attach_alternative(contenido_html,'text/html')
@@ -56,3 +56,5 @@ class VistaYaActivo(TemplateView):
 	template_name = 'registro/usuario_ya_activo.html'
 class VistaError(TemplateView):
 	template_name = 'registro/error_activacion.html'
+class VistaExito(TemplateView):
+	template_name = 'registro/registro_exito.html'

@@ -1,0 +1,19 @@
+
+{% load bootstrap3 %}
+{% block block_title %}Perfil de usuario{% endblock %}
+
+{% block body_block %}
+{% if object == None %}
+<h1>Cuenta desactivada</h1>
+
+{% else %}
+
+<h1>Usuario: {{ perfil.usuario }}</h1>
+<p>Pais: {{ perfil.usuario.pais }}</p>
+<p>Correo: {{perfil.usuario.correo}}</p>
+<p>Descripcion: {{perfil.usuario.descripcion}}</p>
+
+{% endif %}
+
+
+{% endblock %}

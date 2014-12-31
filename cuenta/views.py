@@ -11,14 +11,12 @@ class VistaPerfilPublico(CreateView):
 	#Aqui obtenemos el usuario, mediante el url
 	def dispatch(self, *args, **kwargs):
 	    self.usuario = self.kwargs['usuario']
-<<<<<<< HEAD
 	    return super(VistaPerfil, self).dispatch(*args, **kwargs)
 	def get(self, request, *args, **kwargs):
 		try:
 
 
 #Aqui repetiré basicamente lo de la clase anterior, pero se agregará el metodo de edicion bajo un url /cuenta/usuario/codigousuarioactivacion
-=======
 	    return super(VistaPerfilPublico, self).dispatch(*args, **kwargs)
 	def get(self, request, *args, **kwargs):
 		try:
@@ -33,6 +31,5 @@ class VistaPerfilPublico(CreateView):
 
 
 #Aqui repetiré basicamente lo de la clase anterior, pero se agregará el metodo de edicion bajo un url /cuenta/codsuarioactivacion
->>>>>>> branch-juan
 
 

@@ -4,19 +4,23 @@
 
 {% block head_block %}
 {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static "css/registro.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/registro.css" %}">
 {% bootstrap_messages %}
 {% endblock %}
 {% block body_block %}
- <h1>Únete a nuestra comunidad</h1>
- <br>
-  <form action="" method="post" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-    <button type="submit" class="btn btn-success">
-      {% bootstrap_icon "star" %} Aceptar
-    </button>
-    {% endbuttons %}
-  </form>
+{% if user.is_authenticated %}
+<h1>Ya estás registrado</h1>
+{% else %}
+<h1>Únete a nuestra comunidad</h1>
+<br>
+<form action="" method="post" class="form">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+  <button type="submit" class="btn btn-success">
+    {% bootstrap_icon "star" %} Aceptar
+  </button>
+  {% endbuttons %}
+</form>
+{% endif %}
 {% endblock %}

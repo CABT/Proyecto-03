@@ -2,10 +2,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import Inicio
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'sangobemoledor.views.index', name='inicio'),
+    url(r'^$', Inicio.as_view(), name='inicio'),
     url(r'^registro/', include('registro.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )

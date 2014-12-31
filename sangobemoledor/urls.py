@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', Inicio.as_view(), name='inicio'),
     url(r'^registro/', include('registro.urls')),
+    url(r'^cuenta/', include('cuenta.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^inicio-sesion/', views.inicio_sesion, name='inicio-sesion'),
 )

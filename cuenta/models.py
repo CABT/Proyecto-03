@@ -5,6 +5,9 @@ from registro.models import RegistroUsuario
 class Perfil(models.Model):
 	usuario = models.ForeignKey(RegistroUsuario)
 
+	def user(self):
+		return self.RegistroUsuario.username 
+
 	def __str__(self):
 		return self.RegistroUsuario.username
 

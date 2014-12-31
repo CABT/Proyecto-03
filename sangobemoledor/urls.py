@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^registro/', include('registro.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^inicio-sesion/', views.inicio_sesion, name='inicio-sesion'),
+    url(r'^cerrar-sesion/', views.cerrar_sesion, name='cerrar-sesion'),
 )
 
 if settings.DEBUG:

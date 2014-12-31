@@ -30,5 +30,6 @@ class VistaPerfilPublico(DetailView):
 		except Perfil.DoesNotExist:
 			return None
 
-
-
+#Templates de error
+class UsuarioInexistente(TemplateView):
+	template_name = 'perfil/usuario_inexistente.html'

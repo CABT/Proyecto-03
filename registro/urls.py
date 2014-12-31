@@ -12,5 +12,6 @@ urlpatterns = patterns('.views',
                 url(r'^ya_activo/$',VistaYaActivo.as_view(),name='ya_activo'),
                 #Si no existe el usuario, mandaremos este template de error_activacion
                 url(r'^error_activacion/$',VistaError.as_view(),name='error'),
+                url(r'^registro_exito/$',VistaExito.as_view(),name='registro_exito'),
 
 )

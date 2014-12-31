@@ -12,7 +12,7 @@ class VistaRegistro(CreateView):
     model = RegistroUsuario
     form_class = FormaRegistro
     template_name = 'registro/registro.html'
-    success_url = '/registro/registro_completado/'
+    success_url = '/registro/registro_exito/'
     
     def form_valid(self, form):
     	#Cambiamos el valor por omision para que sea forzosa su activacion
@@ -56,3 +56,5 @@ class VistaYaActivo(TemplateView):
 	template_name = 'registro/usuario_ya_activo.html'
 class VistaError(TemplateView):
 	template_name = 'registro/error_activacion.html'
+class VistaExito(TemplateView):
+	template_name = 'registro/registro_exito.html'

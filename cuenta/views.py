@@ -11,18 +11,18 @@ from registro.models import RegistroUsuario
 class VistaPerfilPublico(CreateView):
 	#Aqui obtenemos el usuario, mediante el url
 	def dispatch(self, *args, **kwargs):
-	    self.usuario = self.kwargs['usuario']
+	    self.usuario = RegistroUsuario.objects.get(username=self.kwargs['usuario'])
 	    return super(VistaPerfilPublico, self).dispatch(*args, **kwargs)
 
 	def get(self, request, *args, **kwargs):
 		try:
 			self.persona = Perfil.objects.get(usuario=self.usuario)
 			if self.persona.usuario.is_active == True:
-				return HttpResponse('yep')
+				return HttpResponseRedirect("/")
 			else:
-				return HttpResponseRedirect("cuenta/cuenta_desactivada") # agregar a los urls
+				return HttpResponseRedirect("/cuenta/cuenta_desactivada") # agregar a los urls
 		except Perfil.DoesNotExist:
-			return HttpResponseRedirect("cuenta/error") #agregar a los urls
+			return HttpResponseRedirect("/cuenta/error") #agregar a los urls
 
 
 

@@ -6,7 +6,8 @@ from django.http import HttpResponse
 import random, string
 
 from .models import RegistroUsuario
-from .forms import FormaRegistro 
+from .forms import FormaRegistro
+from cuenta.models import Perfil #Agregado para la creacion de un perfil una vez que se activa la cuenta 
 
 class VistaRegistro(CreateView):
     model = RegistroUsuario
@@ -43,6 +44,10 @@ class VistaUsuarioActivacion(CreateView):
 	        if self.usuario.is_active == False:
 	            self.usuario.is_active = True
 	            self.usuario.save()
+                #Aquí agrego la creacion de un perfil
+                self.perfil = Perfil()
+                self.perfil.usuario = self.usuario
+                self.perfil.save()
 	            return HttpResponseRedirect("/registro/activacion_exitosa/")
 	        else:
 	            return HttpResponseRedirect("/registro/ya_activo/")

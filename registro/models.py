@@ -8,11 +8,11 @@ from imagekit.processors import ResizeToFill
 # Create your models here.
 
 class RegistroUsuario(AbstractUser):
-    avatar = ProcessedImageField(verbose_name='Foto de Perfil', upload_to='/static/registro/media',
+    avatar = ProcessedImageField(verbose_name='Foto de Perfil', upload_to='/static/media/img_usuario',
                                  processors=[ResizeToFill(50,50)],
                                  format='JPEG',
                                  options={'quality: 75'},
-                                 default='/static/registro/media/img_usuario_default.png'
+                                 default='/static/media/img_usuario/img_usuario_default.png'
                                  )
     pais = CountryField(verbose_name='País')
     correo = models.EmailField(verbose_name='Dirección de correo', unique=True,

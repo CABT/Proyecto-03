@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 from django.shortcuts import render
 from django.views.generic import CreateView, View, TemplateView, DetailView
 from django.http import HttpResponseRedirect
@@ -30,8 +31,4 @@ class VistaPerfilPublico(DetailView):
 			return None
 
 
-#class Vista PerfilEdicion(CreateView)
 
-#Templates de error
-class UsuarioInexistente(TemplateView):
-	template_name = 'perfil/usuario_inexistente.html'

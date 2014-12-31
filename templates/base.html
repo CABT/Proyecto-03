@@ -50,11 +50,13 @@
 	  
 	  <ul class="nav navbar-nav navbar-right">
 	    {% if user.is_authenticated %}
+	    <li><a href="#">{% bootstrap_icon "music" %} Subir Música</a></li>
 	    <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{% bootstrap_icon "user" %} {{ user.get_username }} <span class="caret"></span>
 	      </a>
               <ul class="dropdown-menu" role="menu">
 		<li><a href="#">Mi Perfil</a></li>
+		<li><a href="#">Editar Perfil</a></li>
 		<li><a href="{% url 'cerrar-sesion' %}">Cerrar Sesión</a></li>
               </ul>
             </li>

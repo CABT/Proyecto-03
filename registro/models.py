@@ -17,11 +17,10 @@ class RegistroUsuario(AbstractUser):
     pais = CountryField(verbose_name='País')
     correo = models.EmailField(verbose_name='Dirección de correo', unique=True,
                               max_length=255)
-
     descripcion = models.CharField(verbose_name='Descripción', max_length=255,
                                    null = True, blank = True)
     activation_key = models.CharField(default='12345',max_length=30)
-    
+
     def __str__(self):
         return self.username
 

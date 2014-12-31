@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 from django.shortcuts import render
 from django.views.generic import CreateView, View, TemplateView
 from django.http import HttpResponseRedirect
@@ -15,7 +16,7 @@ class VistaPerfilPublico(CreateView):
 			self.usuario = RegistroUsuario.objects.get(username=self.kwargs['usuario'])
 		except:
 			return HttpResponseRedirect("/cuenta/error")
-	    return super(VistaPerfilPublico, self).dispatch(*args, **kwargs)
+                return super(VistaPerfilPublico, self).dispatch(*args, **kwargs)
 
 	def get(self, request, *args, **kwargs):
 		try:
@@ -24,7 +25,6 @@ class VistaPerfilPublico(CreateView):
 				return HttpResponseRedirect("/")
 			else:
 				return HttpResponseRedirect("/cuenta/cuenta_desactivada") #agregar a los urls
-
 
 
 

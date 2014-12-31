@@ -6,8 +6,13 @@ from django.http import HttpResponse
 import random, string
 
 from .models import RegistroUsuario
+<<<<<<< HEAD
 from .forms import FormaRegistro 
 from cuenta.models import Perfil ## Agrego esto
+=======
+from .forms import FormaRegistro
+from cuenta.models import Perfil #Agregado para la creacion de un perfil una vez que se activa la cuenta 
+>>>>>>> branch-juan
 
 class VistaRegistro(CreateView):
     model = RegistroUsuario
@@ -44,7 +49,11 @@ class VistaUsuarioActivacion(CreateView):
 	        if self.usuario.is_active == False:
 	            self.usuario.is_active = True
 	            self.usuario.save()
+<<<<<<< HEAD
                 #Si es exitoso creamos tambien el perfil
+=======
+                #Aquí agrego la creacion de un perfil
+>>>>>>> branch-juan
                 self.perfil = Perfil()
                 self.perfil.usuario = self.usuario
                 self.perfil.save()

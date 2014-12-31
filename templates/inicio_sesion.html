@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block head_block %}
+{% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/registro.css" %}">
+{% bootstrap_messages %}
+{% endblock %}
+    
+{% block title %}Inicia Sesión{% endblock %}
+
+{# Display a form #}
+{% block body_block %}
+    {% if user.is_authenticated %}
+    <h1>Ya iniciaste sesión</h1>
+    {% else %}
+    <h1>Inicia Sesión</h1>
+    <form id="login_form" method="post" action="/inicio-sesion/">
+	{% csrf_token %}
+	<div class="form-group">
+	  <label for="usuario">Usuario</label>
+	  <input type="text" class="form-control" name="username" id="usuario" placeholder="Usuario"/>
+	</div>
+	<div class="form-group">
+	  <label for="contrasenia">Contraseña</label>
+	  <input type="password" class="form-control"  name="password" id="contrasenia" placeholder="Contraseña"/>
+	</div>
+	<button type="submit" class="btn btn-success">{% bootstrap_icon "star" %} Aceptar</button>
+    </form>
+    {% endif %}
+{% endblock %}

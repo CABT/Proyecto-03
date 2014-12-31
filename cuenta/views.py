@@ -18,16 +18,10 @@ class VistaPerfilPublico(DetailView):
 	def dispatch(self, *args, **kwargs):
 		try:
 			self.usuario = RegistroUsuario.objects.get(username=self.kwargs['usuario'])
-<<<<<<< HEAD
-		except:
-			return HttpResponseRedirect("/cuenta/error")
-                return super(VistaPerfilPublico, self).dispatch(*args, **kwargs)
-=======
 		except RegistroUsuario.DoesNotExist: 
 			return HttpResponseRedirect("/cuenta/usuario_inexistente")
 		#print('hey')
 		return super(VistaPerfilPublico, self).dispatch(*args, **kwargs)	
->>>>>>> db728efd223a3f32f27b0097b6539e8bed43ce58
 
 	def get_object(self):
 		print('ho')

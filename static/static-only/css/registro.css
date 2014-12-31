@@ -1,5 +1,16 @@
-body  {
-     font-family: Arial;
-     font-size: 15px;
-     backgroud-color: black;
+input  {
+    max-width: 350px;
+}
+
+select  {
+    max-width: 350px;
+}
+
+span.help-block  {
+    max-width: 350px;
+}
+
+textarea  {
+    max-width: 350px;
+    max-height: 100px;
 }

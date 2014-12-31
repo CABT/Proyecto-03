@@ -14,11 +14,17 @@ class FormaRegistro(forms.ModelForm):
         label='Ingrese su contraseña nuevamente',
         widget=forms.PasswordInput()
     )
+
+    descripcion = forms.CharField(
+        widget=forms.Textarea,
+        help_text='Escribe algo sobre tí en un máximo de 255 carácteres. Campo no requerido',
+        required = False
+    )
     
     class Meta:
         model = RegistroUsuario
         fields = ["username", "correo", "password", 
-                  "password_check", "pais", "avatar",]
+                  "password_check", "pais", "avatar", "descripcion"]
 
     def clean_password_check(self):
         if 'password' in self.cleaned_data:
@@ -53,4 +59,7 @@ class FormaRegistro(forms.ModelForm):
         if commit:
             usuario.save()
         return usuario
-       
+
+
+#class FormaIniciaSesion(forms.ModelForm):
+    

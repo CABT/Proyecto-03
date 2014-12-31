@@ -1,6 +1,10 @@
 from django.conf.urls import patterns, include, url
 from .views import *
 
+'''
+urlpatterns = patterns('registro.views',
+                url(r'^$', VistaRegistro.as_view(), name='registro'),                
+'''
 urlpatterns = patterns('.views',
                 url(r'^$',VistaRegistro.as_view(), name='registro'),
                 #Esta será la url que reciba el usuario a registrar por correo y mandará a llamar el método que verificará la validez
@@ -11,4 +15,5 @@ urlpatterns = patterns('.views',
                 url(r'^ya_activo/$',VistaYaActivo.as_view(),name='ya_activo'),
                 #Si no existe el usuario, mandaremos este template de error_activacion
                 url(r'^error_activacion/$',VistaError.as_view(),name='error'),
+
 )

@@ -1,7 +1,7 @@
 import os
 import sys
 
-path='/var/www/sangobemoledor'
+path='/srv/http/sangobemoledor.com'
 
 if path not in sys.path:
 sys.path.append(path)

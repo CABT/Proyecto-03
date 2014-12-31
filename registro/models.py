@@ -21,6 +21,7 @@ class RegistroUsuario(AbstractUser):
     descripcion = models.CharField(verbose_name='Descripción', max_length=255,
                                    null = True, blank = True)
     activation_key = models.CharField(default='12345',max_length=30)
+
     def __str__(self):
         return self.smart_unicode(username)
 

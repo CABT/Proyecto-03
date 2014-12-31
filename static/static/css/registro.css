@@ -9,3 +9,8 @@ select  {
 span.help-block  {
     max-width: 350px;
 }
+
+textarea  {
+    max-width: 350px;
+    max-height: 100px;
+}

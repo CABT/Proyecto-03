@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import Inicio
+from sangobemoledor import views
 
 urlpatterns = patterns('',
     # Examples:
@@ -10,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^$', Inicio.as_view(), name='inicio'),
     url(r'^registro/', include('registro.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^inicio-sesion/', views.inicio_sesion, name='inicio-sesion'),
 )
 
 if settings.DEBUG:

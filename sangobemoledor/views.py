@@ -22,7 +22,7 @@ def inicio_sesion(request):
                                 messages.warning(request, 'Tu cuenta aun no esta activada, por favor revisa tu correo')
                                 return HttpResponseRedirect('/inicio-sesion/')
                 else:
-                        messages.error(request, 'Usuario o contraseña inválidos')
+                        messages.error(request, 'Usuario o contraseña incorrectos')
                         return HttpResponseRedirect('/inicio-sesion/')
         else:
                 return render(request, 'inicio_sesion.html', {})

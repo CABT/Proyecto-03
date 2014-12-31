@@ -6,7 +6,6 @@ from .views import Inicio
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', Inicio.as_view(), name='inicio'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', Inicio.as_view(), name='inicio'),
     url(r'^registro/', include('registro.urls')),

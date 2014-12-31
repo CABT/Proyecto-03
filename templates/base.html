@@ -3,10 +3,11 @@
 
 <html lang="es-mx">
   <head>
+    <meta charset="UTF-8">
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static "static/css/base.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
     {% block head_block %}{% endblock %}
     <title>{% block title %}Sango Bemoledor{% endblock %}</title>
   </head>
@@ -34,7 +35,7 @@
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	  <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Foro<span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Foro</a></li>
             <li><a href="#">Explora</a></li>
 	  </ul>
 	  <form class="navbar-form navbar-left" role="search">
@@ -48,9 +49,12 @@
 
 	  
 	  <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Inicia Sesión</a></li>
-	    <li><a href="#">Regístrate</a></li>
-            <li class="dropdown">
+	    {% if user.is_authenticaded %}
+	    {% else %} 
+	    <li><a href="#">Inicia Sesión</a></li>
+	    <li><a href="{% url  'registro' %}">Regístrate</a></li>
+	    {% endif %}
+	    <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-asterisk"></span></a>
               <ul class="dropdown-menu" role="menu">
 		<li><a href="#">Acerca de...</a></li>

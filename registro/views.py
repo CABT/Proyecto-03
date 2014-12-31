@@ -7,7 +7,8 @@ import random, string
 
 from .models import RegistroUsuario
 from .forms import FormaRegistro 
-from cuenta.models import Perfil #Agregado para la creacion de un perfil una vez que se activa la cuenta 
+from cuenta.models import Perfil ## Agrego esto
+
 
 class VistaRegistro(CreateView):
     model = RegistroUsuario
@@ -44,7 +45,6 @@ class VistaUsuarioActivacion(CreateView):
             if self.usuario.is_active == False:
                 self.usuario.is_active = True
                 self.usuario.save()
-                #Aquí agrego la creacion de un perfil
                 self.perfil = Perfil()
                 self.perfil.usuario = self.usuario
                 self.perfil.save()
@@ -53,6 +53,7 @@ class VistaUsuarioActivacion(CreateView):
                 return HttpResponseRedirect("/registro/ya_activo/")
         except RegistroUsuario.DoesNotExist:
             return HttpResponseRedirect('/registro/error_activacion') 
+
 
 #Vistas resultantes de acuerdo al intento de activacion
 class VistaActivacionExitosa(TemplateView):
@@ -63,3 +64,4 @@ class VistaError(TemplateView):
     template_name = 'registro/error_activacion.html'
 class VistaExito(TemplateView):
     template_name = 'registro/registro_exito.html'
+

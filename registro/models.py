@@ -4,7 +4,6 @@ from django.contrib.auth.models import AbstractUser
 from django_countries.fields import CountryField
 from imagekit.models import ProcessedImageField 
 from imagekit.processors import ResizeToFill
-#from django.utils.encoding import smart_unicode
  
 # Create your models here.
 
@@ -23,8 +22,8 @@ class RegistroUsuario(AbstractUser):
     activation_key = models.CharField(default='12345',max_length=30)
 
     def __str__(self):
-        return self.smart_unicode(username)
+        return self.username
 
     def __unicode__(self):
-        return self.smart_unicode(username)
+        return self.username
  

@@ -2,7 +2,7 @@
 from django.http import HttpResponse
 from django.views.generic import CreateView, View, TemplateView
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render

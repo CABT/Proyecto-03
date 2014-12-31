@@ -50,16 +50,24 @@
 	  
 	  <ul class="nav navbar-nav navbar-right">
 	    {% if user.is_authenticated %}
-	    <li><a href="#">{% bootstrap_icon "user" %} {{ user.get_username }}</a></li>
+	    <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{% bootstrap_icon "user" %} {{ user.get_username }} <span class="caret"></span>
+	      </a>
+              <ul class="dropdown-menu" role="menu">
+		<li><a href="#">Mi Perfil</a></li>
+		<li><a href="{% url 'cerrar-sesion' %}">Cerrar Sesión</a></li>
+              </ul>
+            </li>
+	    
 	    {% else %} 
 	    <li><a href="{% url 'inicio-sesion' %}">Inicia Sesión</a></li>
 	    <li><a href="{% url  'registro' %}">Regístrate</a></li>
 	    {% endif %}
 	    <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-asterisk"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-asterisk"></span>
+	      </a>
               <ul class="dropdown-menu" role="menu">
-		<li><a href="#">Acerca de...</a></li>
-		<li class="divider"></li>
+		<li><a href="#">Acerca De...</a></li>
 		<li><a href="#">Creadores</a></li>
               </ul>
             </li>

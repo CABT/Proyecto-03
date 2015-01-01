@@ -1,12 +1,14 @@
+# -*- coding: UTF-8 -*-
 from django.db import models
+from  registro.models import RegistroUsuario
 
-class EntryQuerySet(models.QuerySet):
-    def published(self):
-        return self.filter(publish=True)
+class Filtra(models.QuerySet):
+    def publicado(self):
+        return self.filter(publica=True)
         
 class Categoria(models.Model):
 
-    titulo = models.CharField(max_length=60)
+    titulo = models.CharField(max_length=60, unique =True)
     slug = models.SlugField(max_length=200, unique=True)
 
     def __str__(self):
@@ -15,17 +17,21 @@ class Categoria(models.Model):
     def __unicode__(self):
         return self.titulo
 
+    def get_absolute_url(self):
+        return reverse("hilo", kwargs={"slug": self.slug,})
+        
     class Meta:
         verbose_name_plural = "Categorías"
         
 class Hilo(models.Model):
 
-    categoria = models.ForeignKey(Categoria)
     titulo = models.CharField(max_length=60)
+    categoria = models.ForeignKey(Categoria)
+    usuario = models.ForeignKey(RegistroUsuario)
     contenido = models.TextField(max_length=2000)
     fecha = models.DateTimeField(auto_now_add=True)
     publica = models.BooleanField(default=True)
-    objects = EntryQuerySet.as_manager()
+    objects = Filtra.as_manager()
     slug = models.SlugField(max_length=200, unique=True)
     
     def __str__(self):
@@ -34,19 +40,37 @@ class Hilo(models.Model):
     def __unicode__(self):
         return self.titulo
 
+    def get_absolute_url(self):
+        return reverse("hilo", kwargs={"id": self.id, "slug": self.slug,})
+
     class Meta:
         verbose_name_plural = "Hilos"
-        ordering = ["-created"]
+        ordering = ["-fecha"]
     
 class Comentario(models.Model):
-
+    
+    usuario = models.ForeignKey(RegistroUsuario)
     hilo = models.ForeignKey(Hilo)
     contenido = models.TextField(max_length=2000)
-    objects = EntryQuerySet.as_manager()
+    objects = Filtra.as_manager()
+    fecha = models.DateTimeField(auto_now_add=True)
+    publica = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return str(self.id)
+        
+    def __unicode__(self):
+        return str(self.id)
 
+    def get_categoria(self):
+        return self.hilo.categoria
+
+    get_categoria.short_description = 'Categoría'
+        
     class Meta:
         verbose_name_plural = "Comentarios"
-        ordering = ["-created"]
+        ordering = ["-fecha"]
+
         
 class DenunciaComentario(models.Model):
     comentario = models.ForeignKey(Comentario)
@@ -61,7 +85,7 @@ class DenunciaComentario(models.Model):
     class Meta:
         verbose_name = "Comentario denunciado"
         verbose_name_plural = "Comentarios denunciados"
-        ordering = ["-created"]
+        ordering = ["-fecha"]
         
 class DenunciaHilo(models.Model):
     hilo = models.ForeignKey(Hilo)
@@ -76,4 +100,4 @@ class DenunciaHilo(models.Model):
     class Meta:
         verbose_name = "Hilo denunciado"
         verbose_name_plural = "Hilos denunciados"
-        ordering = ["-created"]
+        ordering = ["-fecha"]

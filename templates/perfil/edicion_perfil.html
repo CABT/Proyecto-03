@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block head_block %}
+{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static "css/registro.css" %}">
+{% bootstrap_messages %}
+{% endblock %}
+
+{% block title %}Edición de Perfil{% endblock %}
+
+{% block body_block %}
+
+
+{%if usuario.pk == user.id %}
+
+<form action="" method="post" class="form">{% csrf_token %}
+    {#{ form.as_p }#}
+    <!--input type="submit" value="Actualizar" /-->
+  {% bootstrap_form form %}
+  {% buttons %}
+  <button type="submit" class="btn btn-success">
+    {% bootstrap_icon "star" %} Aceptar
+  </button>
+  {% endbuttons %}
+</form>
+
+{% else %}
+
+	<h1>Usuario: No tienes permitido editar </h1>
+{% endif %}
+{% endblock %}

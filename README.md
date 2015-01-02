@@ -65,25 +65,28 @@ al contenido de los directorios como se ve a continuación:
  	**[usuario@host sangobemoledor]$ psql base < sangodb.sql**
  Para completar este paso suponemos que PostgreSQL ya está instalado y configurado en su sistema operativo.
  
-	Nota: para el ejemplo expuesto 'usuario' debe ser un Rol de Postgres, y ya debe existir una base de datos con el nombre 'base' para que tenga éxito ($ createdb base). No nos detendremos a explicar la instalación de Postgres pues varia de sistema operativo a sistema operativo (recomendamos referirse a la documentación o wiki correspondiente, sin embargo podemos asegurar que el procedimiento no presenta problemas en Linux: ubuntu, 	archlinux y fedora.
+	Nota: para el ejemplo expuesto 'usuario' debe ser un Rol de Postgres, y ya debe existir una base de datos con 	el nombre 'base' para que tenga éxito ($ createdb base). No nos detendremos a explicar la instalación de Postgres pues varia de sistema operativo a sistema operativo (recomendamos referirse a la documentación o wiki correspondiente, sin embargo podemos asegurar que el procedimiento no presenta problemas en Linux: ubuntu, 	archlinux y fedora.
 	 
 A continuación es muy importante que se configure correctamente la base de datos del proyecto en el fichero sangobemoledor/settings.py
 a partir de la línea 62 el archivo, se encuentra algo como lo siguiente:
 	
-## Editar donde se señala para que corresponda con la base de datos local
+ Editar donde se señala para que corresponda con la base de datos local
+ 1//Nombre de la base de datos, donde se virtió el dump.sql.
+ 2//Rol de postgres al que se asocia la base.
+ 3//Contraseña de la base de datos, puede no tener, como en este ejemplo (no recomendable).
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'base',                                 #Nombre de la base de datos, donde se virtió el dump.sql.
-        'USER': 'usuario',                                  #Rol de postgres al que se asocia la base.
-        'PASSWORD': '',                                    #Contraseña de la base de datos, puede no tener, como en este ejemplo (no recomendable).
-        'HOST': 'localhost',
-        'PORT': '5432',
+	DATABASES = {
+    		'default': {
+        	'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        	'NAME': 'base',                                  //1 
+	        'USER': 'usuario',                               //2
+	        'PASSWORD': '',                                  //3  
+	        'HOST': 'localhost',
+	        'PORT': '5432',
     }
 }
 
-#Fin de la edición para el usuario
+Fin de la edición para el usuario
 
 Ya listo lo anterior, no antes de preferencia, prestamos atención al directorio python_proy3, ¿de qué se trata?, es un directorio que preparamos especialmente para facilitar al usuario la más pronta instalación de nuestra aplicación, gracias a Python-VirtualEnviroment, de tal manera que la aplicación no se vea afectada por los paquetes de python del sistema operativo donde se ejecute. E igualmente, evita al usuario instalar muchas más cosas necesarias para el  correcto funcionamiento del servidor. Si acaso la aventura de instalar y configurar PostgreSQL si nunca se ha vivido antes.
 

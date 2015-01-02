@@ -1,7 +1,8 @@
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 from django.views import generic
 from . import models
+from . import forms
 
 class VistaForo(generic.ListView):
     model = models.Categoria
@@ -9,7 +10,6 @@ class VistaForo(generic.ListView):
 
 class VistaCategoria(generic.ListView):
     template_name = "foro/categoria.html"
-    paginate_by = 15
     model = models.Hilo
     context_object_name = 'hilos'
 
@@ -34,7 +34,6 @@ class VistaCategoria(generic.ListView):
 
 class VistaHilo(generic.ListView):
     template_name = "foro/hilo.html"
-    paginate_by = 15
     model = models.Comentario
     context_object_name = 'comentarios'
 
@@ -49,5 +48,35 @@ class VistaHilo(generic.ListView):
     def dispatch(self, *args, **kwargs):
         return super(VistaHilo, self).dispatch(*args, **kwargs)
 
+class HacerHilo(generic.CreateView):
+    model = models.Hilo
+    form_class = forms.HiloForma
+    success_url = "/foro/"
+    template_name = 'foro/crea-hilo.html'
+
+    def dispatch(self, *args, **kwargs):
+        self.categoria = models.Categoria.objects.get(slug=self.kwargs['slug'])
+        return super(HacerHilo, self).dispatch(*args, **kwargs)
+
+    def form_valid(self,form):
+        form.instance.usuario = self.request.user
+        form.instance.categoria = self.categoria
+        return super(HacerHilo,self).form_valid(form)
+
+class HacerComentario(generic.CreateView):
+    model = models.Comentario
+    form_class = forms.ComentarioForma
+    success_url = "/foro/"
+    template_name = 'foro/crea-comentario.html'
+
+    def dispatch(self, *args, **kwargs):
+        self.hilo = models.Hilo.objects.get(id=self.kwargs['id'])
+        return super(HacerComentario, self).dispatch(*args, **kwargs)
+
+    def form_valid(self,form):
+        form.instance.usuario = self.request.user
+        form.instance.hilo = self.hilo
+        return super(HacerComentario,self).form_valid(form)
     
+            
 

@@ -9,9 +9,8 @@
 
 {% block body_block %}
 
-<div class ="jumbotron">
-    <h2><b>Categorías</b></h2>
-</div>
+<h2><b>Categorías</b></h2>
+<br>
   <div class="list-group">
       {% for object in object_list %}
       <a href="/foro/categoria/{{ object.slug }}" class="list-group-item">

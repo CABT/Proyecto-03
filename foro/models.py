@@ -1,7 +1,8 @@
 # -*- coding: UTF-8 -*-
 from django.db import models
 from  registro.models import RegistroUsuario
-        
+from django.core.urlresolvers import reverse
+
 class Categoria(models.Model):
 
     titulo = models.CharField(max_length=60, unique =True)
@@ -27,7 +28,6 @@ class Hilo(models.Model):
     contenido = models.TextField(max_length=2000)
     fecha = models.DateTimeField(auto_now_add=True)
     publica = models.BooleanField(default=True)
-    slug = models.SlugField(max_length=200, unique=True)
     
     def __str__(self):
         return self.titulo
@@ -36,7 +36,7 @@ class Hilo(models.Model):
         return self.titulo
 
     def get_absolute_url(self):
-        return reverse("hilo", kwargs={"cat": self.categoria__slug, "id": self.id, "slug": self.slug,})
+        return reverse("hilo", kwargs={"cat": self.categoria__slug, "id": self.id,})
 
     class Meta:
         verbose_name_plural = "Hilos"
@@ -63,7 +63,7 @@ class Comentario(models.Model):
 
     class Meta:
         verbose_name_plural = "Comentarios"
-        ordering = ["-fecha"]
+        ordering = ["fecha"]
 
         
 class DenunciaComentario(models.Model):

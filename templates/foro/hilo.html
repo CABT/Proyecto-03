@@ -6,10 +6,16 @@
 {% block body_block %}
   <h1>{{ comentarios.0.hilo.categoria.titulo }}</h1>
 <br>
+{% if user.is_authenticated %}
+{% if user.is_active %}
+<h3><a href="/foro/crear-post/{{ comentarios.0.hilo.categoria.slug }}/{{ comentarios.0.hilo.id }}">Comentar</a></h3>
+{% endif %}
+{% endif %}
+<br>
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h1 class="panel-title"><a href="/cuenta/perfil/{{ comentarios.0.hilo.usuario }}">
-	Usuario: {{ comentarios.0.hilo.usuario }}</a>
+	Usuario: {{ comentarios.0.hilo.usuario }}</a> 
     </h1>
   </div>
   <div class="panel-body">
@@ -19,7 +25,7 @@
 	  <img src="{{ comentarios.0.hilo.usuario.avatar }}">
 	</a>
 	<div class="media-body">
-	  <h4 class="media-heading"><a href="/foro/hilo/{{ comentarios.0.hilo.categoria.slug }}/{{ comentarios.0.hilo.id }}/{{ comentarios.0.hilo.slug }}">{{ comentarios.0.hilo.titulo }}</a></h4>
+	  <h4 class="media-heading">{{ comentarios.0.hilo.titulo }}</h4>
 	  {{ comentarios.0.hilo.contenido }}
 	</div>
       </li>

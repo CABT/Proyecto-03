@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}Crea Comentario{% endblock %}
+{% if user.is_authenticated %}
+{% if user.is_active %}
+{% block body_block %}
+    <form action="" method="post" class="form">{% csrf_token %}
+      {% bootstrap_form form %}
+      {% buttons %}
+      <button type="submit" class="btn btn-success">Aceptar</button>
+      {% endbuttons %}
+      </form>
+{% endif %}
+{% endif %}
+{% endblock %}

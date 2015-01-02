@@ -5,6 +5,12 @@
 
 {% block body_block %}
 <h1>{{ hilos.0.categoria.titulo }}</h1>
+{% if user.is_authenticated %}
+{% if user.is_active %}
+<br>
+<h3><a href="/foro/crear/{{ hilos.0.categoria.slug }}">Hacer nuevo hilo</a></h3>
+{% endif %}
+{% endif %}
 <br>
 {% for hilo in hilos %}
 <div class="panel panel-primary">
@@ -20,7 +26,7 @@
 	  <img src="{{ hilo.usuario.avatar }}">
 	</a>
 	<div class="media-body">
-	  <h4 class="media-heading"><a href="/foro/hilo/{{ hilo.categoria.slug }}/{{ hilo.id }}/{{ hilo.slug }}">{{ hilo.titulo }}</a></h4>
+	  <h4 class="media-heading"><a href="/foro/hilo/{{ hilo.categoria.slug }}/{{ hilo.id }}">{{ hilo.titulo }}</a></h4>
 	  {{ hilo.contenido }}
 	</div>
       </li>

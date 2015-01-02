@@ -6,10 +6,10 @@ class Perfil(models.Model):
 	usuario = models.ForeignKey(RegistroUsuario)
 
 	def user(self):
-		return self.RegistroUsuario
+		return self.usuario
 
 	def __str__(self):
-		return self.RegistroUsuario.pk
+		return self.usuario.pk
 
 	def __unicode__(self):
-		return self.RegistroUsuario.pk
+		return self.usuario.pk

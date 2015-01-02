@@ -8,10 +8,22 @@
 
 {% else %}
 
-<h1>Usuario: {{ perfil.usuario }}</h1>
-<p>Pais: {{ perfil.usuario.pais }}</p>
-<p>Correo: {{perfil.usuario.correo}}</p>
-<p>Descripcion: {{perfil.usuario.descripcion}}</p>
+<div class="panel panel-info">
+	<div class="panel-heading"><b>Usuario:</b> {{ perfil.usuario }}</div>
+	<div class="panel-body">
+		<div class="media">
+		  <a class="media-left" href="#">
+		    <img src="{{perfil.usuario.avatar}}">
+		  </a>
+		  <div class="media-body">
+		    <p><b>Pais:</b> {{ perfil.usuario.pais }}</p>
+			<p><b>Correo:</b> {{perfil.usuario.correo}}</p>
+			<p><b>Descripcion:</b> {{perfil.usuario.descripcion}}</p>
+		  </div>
+		</div>
+  	</div>
+</div>
+
 
 {% endif %}
 

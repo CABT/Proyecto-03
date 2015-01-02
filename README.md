@@ -4,7 +4,7 @@ SANGO BEMOLEDOR es una maravillosa aplicación web que además de ayudar a los m
 
 ## Links
 
-* [Website](http://http://54.149.97.239/)
+* [Website](http://54.149.97.239/)
 * [Forum](http://54.149.97.239/foro/categoria/sitio)
 * [Source code](https://github.com/CABT/proyecto-03/)
 

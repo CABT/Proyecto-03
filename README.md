@@ -35,9 +35,9 @@ por apoyo general.
 Las instrucciones son muy sencillas, basta con descomprimir el tar.gz adjunto en el correo, 
 colocarse en el directorio con una sesión de terminal activa, de tal manera que sea posible acceder modularmente
 al contenido de los directorios como se ve a continuación:
-
+##
 └── sangobemoledor
-    ├── sangobemoledor/ -----> ** /settings.py
+    ├── sangobemoledor/ -----> !!! /settings.py
     ├── registro/	
     ├── cuenta/ 		
     ├── foro/		
@@ -48,9 +48,9 @@ al contenido de los directorios como se ve a continuación:
     ├── templates/
     ├── README.md	
     ├── Integrantes.txt
-    ├── sangodb.sql       **
-    └── manage.py         **
-    ├── python_proy3/     **
+    ├── sangodb.sql       !!!
+    └── manage.py         !!!
+    ├── python_proy3/     !!!
 
     
  Prestaremos especial atención a los ficheros señalados con asteriscos. 
@@ -61,8 +61,7 @@ al contenido de los directorios como se ve a continuación:
  Para completar este paso suponemos que PostgreSQL ya está instalado y configurado en su sistema operativo.
  
 	 Nota: para el ejemplo expuesto 'usuario' debe ser un Rol de Postgres, y ya debe existir una base de datos
-	 con el nombre 'base' para que tenga éxito ($ createdb base). No nos detendremos a explicar la instalación de Postgres
-	 pues varia de sistema operativo a sistema operativo (recomendamos referirse a la documentación o wiki correspondiente, sin embargo 		 podemos asegurar que el procedimiento no presenta problemas en Linux: ubuntu, archlinux y fedora.
+	 con el nombre 'base' para que tenga éxito ($ createdb base). No nos detendremos a explicar la instalación de 	Postgres pues varia de sistema operativo a sistema operativo (recomendamos referirse a la documentación o wiki 			correspondiente, sin embargo podemos asegurar que el procedimiento no presenta problemas en Linux: ubuntu, 	archlinux y fedora.
 	 
 A continuación es muy importante que se configure correctamente la base de datos del proyecto en el fichero sangobemoledor/settings.py
 a partir de la línea 62 el archivo, se encuentra algo como lo siguiente:

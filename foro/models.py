@@ -1,10 +1,6 @@
 # -*- coding: UTF-8 -*-
 from django.db import models
 from  registro.models import RegistroUsuario
-
-class Filtra(models.QuerySet):
-    def publicado(self):
-        return self.filter(publica=True)
         
 class Categoria(models.Model):
 
@@ -18,7 +14,7 @@ class Categoria(models.Model):
         return self.titulo
 
     def get_absolute_url(self):
-        return reverse("hilo", kwargs={"slug": self.slug,})
+        return reverse("categoria", kwargs={"slug": self.slug,})
         
     class Meta:
         verbose_name_plural = "Categorías"
@@ -31,7 +27,6 @@ class Hilo(models.Model):
     contenido = models.TextField(max_length=2000)
     fecha = models.DateTimeField(auto_now_add=True)
     publica = models.BooleanField(default=True)
-    objects = Filtra.as_manager()
     slug = models.SlugField(max_length=200, unique=True)
     
     def __str__(self):
@@ -41,7 +36,7 @@ class Hilo(models.Model):
         return self.titulo
 
     def get_absolute_url(self):
-        return reverse("hilo", kwargs={"id": self.id, "slug": self.slug,})
+        return reverse("hilo", kwargs={"cat": self.categoria__slug, "id": self.id, "slug": self.slug,})
 
     class Meta:
         verbose_name_plural = "Hilos"
@@ -52,7 +47,6 @@ class Comentario(models.Model):
     usuario = models.ForeignKey(RegistroUsuario)
     hilo = models.ForeignKey(Hilo)
     contenido = models.TextField(max_length=2000)
-    objects = Filtra.as_manager()
     fecha = models.DateTimeField(auto_now_add=True)
     publica = models.BooleanField(default=True)
     
@@ -66,7 +60,7 @@ class Comentario(models.Model):
         return self.hilo.categoria
 
     get_categoria.short_description = 'Categoría'
-        
+
     class Meta:
         verbose_name_plural = "Comentarios"
         ordering = ["-fecha"]

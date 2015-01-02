@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block head_block %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="/static/css/foro.css">
+{% bootstrap_messages %}
+{% endblock %}
+
+{% block body_block %}
+
+<div class ="jumbotron">
+    <h2><b>Categorías</b></h2>
+</div>
+  <div class="list-group">
+      {% for object in object_list %}
+      <a href="/foro/categoria/{{ object.slug }}" class="list-group-item">
+	  {{ object.titulo }}
+      </a>
+      {% endfor %}
+  </div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}Categoría{% endblock %}
+
+{% block body_block %}
+<h1>{{ hilos.0.categoria.titulo }}</h1>
+<br>
+{% for hilo in hilos %}
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1 class="panel-title"><a href="/cuenta/perfil/{{ hilo.usuario }}">
+	Usuario: {{ hilo.usuario }}</a>
+    </h1>
+  </div>
+  <div class="panel-body">
+    <ul class="media-list">
+      <li class="media">
+	<a class="media-left" href="/cuenta/perfil/{{ hilo.usuario }}">
+	  <img src="{{ hilo.usuario.avatar }}">
+	</a>
+	<div class="media-body">
+	  <h4 class="media-heading"><a href="/foro/hilo/{{ hilo.categoria.slug }}/{{ hilo.id }}/{{ hilo.slug }}">{{ hilo.titulo }}</a></h4>
+	  {{ hilo.contenido }}
+	</div>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

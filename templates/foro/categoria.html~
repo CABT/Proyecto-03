@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}Foro Inicio{% endblock %}
+
+{% block body_block %}
+{% for object in object_list %}
+  <h2><a href="{% url 'hilo' id=object.id slug=object.slug %}">{{ object.titulo }}</a></h2>
+{% endfor %}
+{% endblock %}

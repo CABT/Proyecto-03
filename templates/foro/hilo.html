@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}Hilo{% endblock %}
+
+{% block body_block %}
+  <h1>{{ comentarios.0.hilo.categoria.titulo }}</h1>
+<br>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1 class="panel-title"><a href="/cuenta/perfil/{{ comentarios.0.hilo.usuario }}">
+	Usuario: {{ comentarios.0.hilo.usuario }}</a>
+    </h1>
+  </div>
+  <div class="panel-body">
+    <ul class="media-list">
+      <li class="media">
+	<a class="media-left">
+	  <img src="{{ comentarios.0.hilo.usuario.avatar }}">
+	</a>
+	<div class="media-body">
+	  <h4 class="media-heading"><a href="/foro/hilo/{{ comentarios.0.hilo.categoria.slug }}/{{ comentarios.0.hilo.id }}/{{ comentarios.0.hilo.slug }}">{{ comentarios.0.hilo.titulo }}</a></h4>
+	  {{ comentarios.0.hilo.contenido }}
+	</div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+  
+{% for comentario in comentarios %}
+ <div class="panel panel-info">
+  <div class="panel-heading">
+    <h1 class="panel-title"><a href="/cuenta/perfil/{{ comentario.usuario }}">
+	Usuario: {{ comentario.usuario }}</a>
+    </h1>
+  </div>
+  <div class="panel-body">
+    <ul class="media-list">
+      <li class="media">
+	<a class="media-left" href="/cuenta/perfil/{{ comentario.usuario }}">
+	  <img src="{{ comentario.usuario.avatar }}">
+	</a>
+	<div class="media-body">
+	  {{ comentario.contenido }}
+	</div>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -61,19 +61,19 @@ al contenido de los directorios como se ve a continuación:
  Prestaremos especial atención a los ficheros señalados con asteriscos. 
  
  Lo primero es restaurar la base de datos a partir del dump incluido con el comando psql 
- también es posible comenzar con una base de datos vacía, lo dejamos a su consideración :
+ también es posible comenzar con una base de datos vacía y después hacer las migraciones de Django, lo dejamos a su consideración :
  	**[usuario@host sangobemoledor]$ psql base < sangodb.sql**
  Para completar este paso suponemos que PostgreSQL ya está instalado y configurado en su sistema operativo.
  
-	Nota: para el ejemplo expuesto 'usuario' debe ser un Rol de Postgres, y ya debe existir una base de datos con 	el nombre 'base' para que tenga éxito ($ createdb base). No nos detendremos a explicar la instalación de Postgres pues varia de sistema operativo a sistema operativo (recomendamos referirse a la documentación o wiki correspondiente, sin embargo podemos asegurar que el procedimiento no presenta problemas en Linux: ubuntu, 	archlinux y fedora.
+	Nota: para el ejemplo expuesto 'usuario' debe ser un Rol de Postgres, y ya debe existir una base de datos vacía con 	el nombre 'base' para que tenga éxito ($ createdb base). No nos detendremos a explicar la instalación de Postgres pues varia de sistema operativo a sistema operativo (recomendamos referirse a la documentación o wiki correspondiente, sin embargo podemos asegurar que el procedimiento no presenta problemas en Linux: ubuntu, 	archlinux y fedora.
 	 
 A continuación es muy importante que se configure correctamente la base de datos del proyecto en el fichero sangobemoledor/settings.py
 a partir de la línea 62 el archivo, se encuentra algo como lo siguiente:
 	
  Editar donde se señala para que corresponda con la base de datos local
  1//Nombre de la base de datos, donde se virtió el dump.sql.
- 2//Rol de postgres al que se asocia la base.
- 3//Contraseña de la base de datos, puede no tener, como en este ejemplo (no recomendable).
+ 2//Role de postgres al que se asocia la base.
+ 3//Contraseña del dueño de la base de datos, puede no tener, como en este ejemplo (no recomendable).
 
 	DATABASES = {
     		'default': {
@@ -109,7 +109,7 @@ Que debe resultar en
 
 Así que ya podemos visitar nuestro dirección local desde algún navegador para comenzar a navegar por la aplicación.
 Si se presenta algún problema en este paso o desde un inicio deseaba utilizar una base de datos limpia, este par de comandos deben hacer que todo
-marche bien:
+marche bien (se ejecutan las migraciones de Django):
 	(python_proy3)[usuario@host sangobemoledor]$ python manage.py makemigrations
 	(python_proy3)[usuario@host sangobemoledor]$ python manage.py migrate
 	Y volvemos a correr el servidor ;)
